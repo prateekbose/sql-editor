@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react'
-import CodeEditor from '../components/text-editor/editor'
+import dynamic from 'next/dynamic'
+// import CodeEditor from '../components/text-editor/editor'
 import SidebarTables from '../components/table/table'
 import TopBar from '../components/topBar/topbar'
 import TypesTable from '../components/typesTable/tables'
 import QueryResults from '../components/queryResults/results'
 import { Database, Sidebar, Layout } from 'react-feather'
 import Head from 'next/head'
+const CodeEditor = dynamic(
+  () => import('../components/text-editor/editor'),
+  { ssr: false }
+)
 
 interface TablesType{
   [index: string] : Array<{
@@ -37,7 +42,7 @@ export default function Home(){
   ]
 
   const [space, setSpace] = useState<number>(0)
-  const [code, setCode] = useState<string>("/*\nFor demonstration only:\n\nFor workspace \"Atlan Internship\" use these queries:\n\nTable 'products': \"SELECT * FROM 'products';\"\nTable 'regions': \"SELECT 'regionID', 'regionDescription' FROM 'regions';\"\n\nFor workspace \"Personal Work\" use these queries:\n\nTable 'employees': \"SELECT * FROM 'employees';\"\nTable 'categories': \"SELECT 'categoryID' as 'ID', 'categoryName' as 'Name', 'description' as 'Description' FROM 'categories';\"\n*/\n\n")
+  const [code, setCode] = useState<string>("/*\nFor demonstration only:\n\nFor workspace \"Atlan Internship\" use these queries:\n\nTable 'products': \"SELECT * FROM 'products';\"\nTable 'regions': \"SELECT 'regionID', 'regionDescription' FROM 'regions';\"\n\nFor workspace \"Personal Work\" use these queries:\n\nTable 'employees': \"SELECT * FROM 'employees';\"\nTable 'categories': \"SELECT 'categoryID' as 'ID', 'categoryName' as 'Name', 'description' as 'Description' FROM 'categories';\"\nExecute one query at a time.\n*/\n\n")
   const [theme, setTheme] = useState<number>(0)
   
   const [tableIndex, setTableIndex] = useState<number>(-1)
