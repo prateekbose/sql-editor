@@ -6,12 +6,19 @@ import TypesTable from '../components/typesTable/tables'
 import QueryResults from '../components/queryResults/results'
 import { Database, Sidebar, Layout } from 'react-feather'
 
+interface TablesType{
+  [index: string] : Array<{
+    field: string,
+    type: string
+  }>
+}
+
 export default function Home(){
 
   const themes = ["vs-dark", "light"]
 
   const tables = [["products", "regions"], ["employees", "categories"]]
-  const table = {
+  const table:TablesType = {
     "categories": [{field: "ID", type: "integer"}, {field: "Name", type: "string"}, {field: "Description", type: "string"}],
     "employees": [{field: "employeeID", type: "integer"}, {field: "firstName", type: "string"}, {field: "lastName", type: "string"}, {field: "title", type: "string"}],
     "products": [{field: "productID", type: "integer"}, {field: "productName", type: "string"}, {field: "categoryID", type: "integer"}],
@@ -39,7 +46,7 @@ export default function Home(){
   const [fetch, setFetch] = useState<boolean>(false)
 
   const [result, setResult] = useState<Array<any>>([])
-  const [resultFields, setResultFields] = useState<Array<any>>([])
+  const [resultFields, setResultFields] = useState<Array<{field: string, type: string}>>([])
 
   useEffect(() => {
     setTableIndex(-1)
