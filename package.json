@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@keystone-next/keystone": "^25.0.4",
     "@monaco-editor/react": "^4.2.2",
     "next": "11.1.2",
     "prism-themes": "^1.9.0",
