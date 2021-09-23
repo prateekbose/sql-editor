@@ -19,6 +19,9 @@ For the page Optimization, disabling SSR for the Code Editor Component and Lazy 
 ## With Optimization
 ![results with optimization](./images/image1.png)
 
+## Further possible Optimizations
+The Monaco Editor fetches scripts from jsCDN for its usage, these scripts can be served locally which can further improve performance
+
 To run the app locally:
 
 1. Clone the repository
