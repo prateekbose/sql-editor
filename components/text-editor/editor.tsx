@@ -1,4 +1,8 @@
-import Editor from "@monaco-editor/react"
+import dynamic from "next/dynamic"
+// import Editor from "@monaco-editor/react"
+const Editor = dynamic(() => import('@monaco-editor/react'),
+  { ssr: false}
+)
 
 interface EditorProps{
     themes: Array<string>,
