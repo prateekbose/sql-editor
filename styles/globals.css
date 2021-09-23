@@ -167,6 +167,12 @@ body {
   padding: 0rem 1.25rem 0rem 3rem;
 }
 
+.code-editor-section .code-editor-top-bar .btn-section{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .light .code-editor-section .code-editor-top-bar{
   background-color: transparent;
 }

@@ -13,7 +13,9 @@ export default function CodeEditor({themes, theme, code, setCode, setQuery}: Edi
         <div className="code-editor">
             <div className="code-editor-top-bar">
               <h1>Code</h1>
-              <button onClick={() => setQuery(code)}>Run Query</button>
+              <div className="btn-section">
+                <button onClick={() => setQuery(code)}>Run Query</button>
+              </div>
             </div>
             <Editor
               height="55vh"
@@ -21,7 +23,7 @@ export default function CodeEditor({themes, theme, code, setCode, setQuery}: Edi
               theme={themes[theme]}
               defaultLanguage="sql"
               defaultValue={code}
-              onChange={(code) => setCode(String(code))}
+              onChange={(c) => setCode(String(code))}
               options={{
                 "acceptSuggestionOnCommitCharacter": true,
                 "acceptSuggestionOnEnter": "on",

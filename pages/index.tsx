@@ -42,7 +42,7 @@ export default function Home(){
   ]
 
   const [space, setSpace] = useState<number>(0)
-  const [code, setCode] = useState<string>("/*\nFor demonstration only:\n\nFor workspace \"Atlan Internship\" use these queries:\n\nTable 'products': \"SELECT * FROM 'products';\"\nTable 'regions': \"SELECT 'regionID', 'regionDescription' FROM 'regions';\"\n\nFor workspace \"Personal Work\" use these queries:\n\nTable 'employees': \"SELECT * FROM 'employees';\"\nTable 'categories': \"SELECT 'categoryID' as 'ID', 'categoryName' as 'Name', 'description' as 'Description' FROM 'categories';\"\nExecute one query at a time.\n*/\n\n")
+  const [code, setCode] = useState<string>("/*\nFor demonstration only; NOTE: RUN ONLY ONE QUERY AT A TIME AND AS FOLLOWS\n\nFor workspace \"Atlan Internship\" use these queries:\n\nTable 'products': \"SELECT * FROM 'products';\"\nTable 'regions': \"SELECT 'regionID', 'regionDescription' FROM 'regions';\"\n\nFor workspace \"Personal Work\" use these queries:\n\nTable 'employees': \"SELECT * FROM 'employees';\"\nTable 'categories': \"SELECT 'categoryID' as 'ID', 'categoryName' as 'Name', 'description' as 'Description' FROM 'categories';\"\n\nWorkspace can be changed from the top bar (top-left), while the theme can be changed from top-right button.\n\nThe left sidebar shows tables in the workspace, and once selected the right sidebar would show the Schema for the selected table.\n\nWrite your query below.\n*/\n\n")
   const [theme, setTheme] = useState<number>(0)
   
   const [tableIndex, setTableIndex] = useState<number>(-1)
@@ -63,14 +63,14 @@ export default function Home(){
   }, [space])
 
   useEffect(() => {
-    const q = query.split("*/")
+    // const q = query.split("*/")
     // console.table({
     //   Query: (query.length == 0)?"":q[1]
     // })
-    if(q.length > 1){
+    if(query.length > 0){
       setFetch(true)
     }
-    if(query.length > 0 && q[1].includes(sqlQueries[space][tableIndex])){
+    if(query.length > 0 && query.includes(sqlQueries[space][tableIndex])){
       setResult(res[space][tableIndex])
       setResultFields(table[tables[space][tableIndex]])
       // console.table(res[space][tableIndex])
@@ -101,7 +101,7 @@ export default function Home(){
         </div>
         <div className={`bottom-bar bottom-bar-${(theme)?'light':'dark'}`}>
           <div className="bottom-bar-sections">
-            <button><Layout size={20}/> Query Results &nbsp; <span className={`results-fetch${(fetch)?(result.length > 0)?' active':' error':''}`}>{(fetch && result.length>0)?result.length + ' rows selected':'Error: Invalid Query'}</span></button>
+            <button><Layout size={20}/> Query Results &nbsp; <span className={`results-fetch${(fetch)?(result.length > 0 && tableIndex !== -1)?' active':' error':''}`}>{(fetch && result.length>0)?result.length + ' rows selected':(tableIndex !== -1)?'Error: Invalid Query':'Error: Select the table to run query'}</span></button>
           </div>
           <QueryResults fields={resultFields} res={result}/>
         </div>
