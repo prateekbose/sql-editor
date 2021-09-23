@@ -4,6 +4,7 @@ The app was made using TypeScript and Next.js.
 
 # Performance Optimizations
 For the page Optimization, disabling SSR for the Code Editor Component and Lazy Loading the Code Editor Component showed significant improvement as follows.
+With the optimizations, the loading, blocking and interactive times improved by about 60%.
 
 | Measure | Without Optimization | With Optimization |
 |---------|-------------------|----------------------|
