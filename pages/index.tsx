@@ -5,6 +5,7 @@ import TopBar from '../components/topBar/topbar'
 import TypesTable from '../components/typesTable/tables'
 import QueryResults from '../components/queryResults/results'
 import { Database, Sidebar, Layout } from 'react-feather'
+import Head from 'next/head'
 
 interface TablesType{
   [index: string] : Array<{
@@ -76,6 +77,9 @@ export default function Home(){
   return [
     <TopBar theme={theme} setTheme={setTheme} space={space} setSpace={setSpace} key={-1}/>,
     <section className={`app-section ${(theme)?'light':'dark'}`} key={0}>
+      <Head>
+        <title>SQL Editor &#8212; Prateek Bose</title>
+      </Head>
       <div className={`sidebar sidebar-${(theme)?'light':'dark'}`}>
         <h1><Sidebar size={20}/> Tables</h1>
         <div className="sidebar-content">
