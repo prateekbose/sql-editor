@@ -7,7 +7,7 @@ For the page Optimization, disabling SSR for the Code Editor Component and Lazy 
 
 | Measure | Without Optimization | With Optimization |
 |---------|-------------------|----------------------|
-| Time To Interactive | 2.7s | 2.2s |
+| Time To Interactive | 4.7s | 2.2s |
 | Speed Index | 2.3s | 1.3s |
 | Total Blocking Time | 2700ms | 730ms |
 | Largest Contentful Paint | 4.0s | 2.1s |
