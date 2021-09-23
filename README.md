@@ -31,7 +31,15 @@ To run the app locally:
 git clone https://github.com/prateekbose/sql-editor.git
 ```
 
-2. Then run the development server:
+2. Install dependencies
+
+```bash
+npm install
+# or
+yarn
+```
+
+3. Then run the development server:
 
 ```bash
 npm run dev
